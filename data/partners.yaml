@@ -1,0 +1,3 @@
+[
+  {"partner_name": "Use built-in registry by default", "normalized_name": "builtin_registry_notice", "synonyms": [], "smiles": null, "formula": null, "source_category": "documentation", "functional_group_tags": [], "allowed_reaction_channels": [], "preferred_reaction_channels": [], "plausibility_class": "not_applicable", "warning_flags": ["documentation_only"], "notes": "The prototype ships a complete built-in registry covering the supplied list. This file documents the expected YAML/JSON-compatible schema for user extensions.", "original_labels": []}
+]

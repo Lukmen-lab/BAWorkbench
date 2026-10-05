@@ -1,0 +1,16 @@
+name: ba_conjugate_workbench
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - rdkit
+  - pandas
+  - numpy
+  - streamlit
+  - py3dmol
+  - pyyaml
+  - openpyxl
+  - pyarrow
+  - pillow
+  - pytest
+  - pip

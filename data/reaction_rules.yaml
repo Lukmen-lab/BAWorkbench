@@ -1,0 +1,9 @@
+[
+  {"channel": "C24_amide", "candidate_class": "C24_amide_BA", "condensation": "BA-C24-COOH + HNR -> BA-C24-CONR + H2O"},
+  {"channel": "C24_ester", "candidate_class": "C24_ester_BA", "condensation": "BA-C24-COOH + HOR -> BA-C24-COOR + H2O"},
+  {"channel": "BA_O_acyl", "candidate_class": "BA_O_acyl_conjugate", "condensation": "BA-OH + RCOOH -> BA-O-C(O)R + H2O"},
+  {"channel": "BA_O_glycoside", "candidate_class": "BA_O_glycoside", "condensation": "BA-OH + sugar donor -> BA-O-glycoside + H2O"},
+  {"channel": "BA_O_sulfation", "candidate_class": "BA_O_sulfate", "rule": "covalent sulfate ester only, no sulfate salts"},
+  {"channel": "BA_O_phosphorylation", "candidate_class": "BA_O_phosphate", "rule": "covalent phosphate ester only, no phosphate salts"},
+  {"channel": "reactive_carbonyl", "candidate_class": "BA_reactive_carbonyl_adduct", "rule": "flag manual review and artifact risk"}
+]

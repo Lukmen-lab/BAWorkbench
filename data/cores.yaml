@@ -1,0 +1,9 @@
+[
+  {"abbrev": "CA", "name": "cholic acid", "sites": ["C3-OH", "C7-OH", "C12-OH", "C24-COOH"]},
+  {"abbrev": "CDCA", "name": "chenodeoxycholic acid", "sites": ["C3-OH", "C7-OH", "C24-COOH"]},
+  {"abbrev": "DCA", "name": "deoxycholic acid", "sites": ["C3-OH", "C12-OH", "C24-COOH"]},
+  {"abbrev": "LCA", "name": "lithocholic acid", "sites": ["C3-OH", "C24-COOH"]},
+  {"abbrev": "UDCA", "name": "ursodeoxycholic acid", "sites": ["C3-OH", "C7-OH", "C24-COOH"]},
+  {"abbrev": "7oxoCA", "name": "7-oxo-cholic acid", "sites": ["C3-OH", "C7-oxo", "C12-OH", "C24-COOH"]},
+  {"abbrev": "7oxoCDCA", "name": "7-oxo-chenodeoxycholic acid", "sites": ["C3-OH", "C7-oxo", "C24-COOH"]}
+]
