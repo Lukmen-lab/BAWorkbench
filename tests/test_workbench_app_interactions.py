@@ -1,8 +1,13 @@
+from pathlib import Path
+
 from streamlit.testing.v1 import AppTest
 
 
+APP_PATH = Path(__file__).resolve().parents[1] / "ba_conjugate_workbench" / "app.py"
+
+
 def test_candidate_row_selection_updates_selected_details_state():
-    app = AppTest.from_file("ba_conjugate_workbench/app.py", default_timeout=60).run()
+    app = AppTest.from_file(APP_PATH, default_timeout=60).run()
     assert not app.exception
 
     candidate_table = app.dataframe[0].value
@@ -21,7 +26,7 @@ def test_candidate_row_selection_updates_selected_details_state():
 
 
 def test_run_folder_control_exposes_discovered_runs():
-    app = AppTest.from_file("ba_conjugate_workbench/app.py", default_timeout=60).run()
+    app = AppTest.from_file(APP_PATH, default_timeout=60).run()
     assert not app.exception
 
     assert app.sidebar.button[0].label == "Terminate Workbench"
