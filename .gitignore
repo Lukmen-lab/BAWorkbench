@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+.release-check/
+.venv/
+venv/
+
+# BAWorkbench runtime data
+outputs/
+cache/
+curation_state.tsv
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Keep the small, versioned example run
+!examples/example_run/
+!examples/example_run/**

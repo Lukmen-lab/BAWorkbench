@@ -1,0 +1,4 @@
+ligand:
+  id: CA_5ff89e134ace
+  smiles: "C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](OC(=O)[C@@H](N)CS)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C"
+  name: "CA C3 L-Cysteine ester"

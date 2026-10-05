@@ -3,14 +3,15 @@ channels:
   - conda-forge
 dependencies:
   - python=3.11
-  - rdkit
-  - pandas
-  - numpy
-  - streamlit
-  - py3dmol
-  - pyyaml
-  - openpyxl
-  - pyarrow
-  - pillow
-  - pytest
+  - rdkit>=2023.9
+  - pandas>=2.0
+  - numpy>=1.24
+  - streamlit>=1.35
+  - py3dmol>=2.0
+  - pyyaml>=6.0
+  - openpyxl>=3.1
+  - pyarrow>=15
+  - pillow>=10
   - pip
+  - pip:
+      - -e .[test]

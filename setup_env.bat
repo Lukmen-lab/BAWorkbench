@@ -40,6 +40,10 @@ if not "%STATUS%"=="0" (
     exit /b %STATUS%
 )
 
+echo Installing BAWorkbench and test dependencies...
+%TOOL% run -n "%ENV_NAME%" python -m pip install -e ".[test]"
+if errorlevel 1 exit /b %ERRORLEVEL%
+
 echo Environment %ENV_NAME% is ready.
 endlocal
 exit /b 0

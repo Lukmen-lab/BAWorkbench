@@ -4,13 +4,13 @@ from ba_conjugate_workbench.data_loader import discover_run_folders, load_candid
 
 
 def test_load_candidates_full_tsv():
-    result = load_candidate_file("outputs/run_001/candidates_full.tsv")
+    result = load_candidate_file("examples/example_run/candidates_full.tsv")
     assert len(result.candidates) > 0
     assert "candidate_id" in result.candidates.columns
 
 
 def test_load_candidates_full_csv():
-    result = load_candidate_file("outputs/run_001/candidates_full.csv")
+    result = load_candidate_file("examples/example_run/candidates_full.csv")
     assert len(result.candidates) > 0
 
 
@@ -23,7 +23,7 @@ def test_missing_optional_columns_are_tolerated(tmp_path):
 
 
 def test_qc_files_load_and_skip_when_absent(tmp_path):
-    qc = load_qc_files("outputs/run_001")
+    qc = load_qc_files("examples/example_run")
     assert qc["generation_summary"] is not None
     empty = load_qc_files(tmp_path)
     assert empty["generation_summary"] is None

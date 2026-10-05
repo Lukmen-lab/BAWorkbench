@@ -1,0 +1,4 @@
+ligand:
+  id: CA_c5c07c6bc6c5
+  smiles: "C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O[C]4O[C@H](CO)[C@@H](O)[C@H](O)[C@H]4O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C"
+  name: "CA C7 D-glucose glycosidic"

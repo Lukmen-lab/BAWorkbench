@@ -1,0 +1,4 @@
+ligand:
+  id: LCA_ff40f1a37eff
+  smiles: "CC(=O)O[C@@H]1CC[C@@]2(C)[C@H](CC[C@@H]3[C@@H]2CC[C@]2(C)[C@@H]([C@H](C)CCC(=O)O)CC[C@@H]32)C1"
+  name: "LCA C3 Acetate ester"

@@ -1,289 +1,173 @@
-# BA Conjugate Candidate Generator
+# BAWorkbench
 
-Python/RDKit prototype for generating chemically defined bile-acid-derived candidate molecules for docking-guided mass spectrometry discovery.
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/Lukmen-lab/BAWorkbench/releases/tag/v0.1.0)
+[![Tests](https://github.com/Lukmen-lab/BAWorkbench/actions/workflows/tests.yml/badge.svg)](https://github.com/Lukmen-lab/BAWorkbench/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-The tool generates covalent bile acid candidates, exports isomeric SMILES and metadata for later docking, and reports exact-mass/formula/adduct data for LC-MS/MS follow-up. It does not run Boltz-2 or any docking pipeline.
+**BAWorkbench v0.1** is an open-source Python/RDKit and Streamlit application for generating, inspecting, curating, and exporting chemically defined bile-acid conjugate candidates. It is intended for hypothesis generation before molecular docking and LC-MS/MS follow-up. It does not perform docking and does not establish that a generated molecule exists biologically.
 
-## Scientific Purpose
+## Capabilities
 
-This project supports hypothesis generation. It creates a broad but traceable library of bile acid conjugates, including known-style C24 amides and esters plus exploratory covalent products that may be useful for docking prioritization and untargeted MS/MS searching. Generated candidates should not be interpreted as evidence that a molecule is naturally present.
+- Generates candidates from CA, CDCA, DCA, LCA, UDCA, 7-oxo-CA, and 7-oxo-CDCA.
+- Includes every selected unmodified bile acid as a reference ligand.
+- Models C24 amides and esters, BA hydroxyl acylation and glycosylation, sulfate/phosphate esters, defined glucan fragments, and flagged reactive-carbonyl adducts.
+- Exports isomeric/canonical SMILES, formulae, exact masses, common adduct m/z values, reaction and attachment metadata, and docking-readiness flags.
+- Provides an interactive local Workbench for filtering, 2D/3D review, curation, and export.
+- Validates named BA modification sites using persistent atom maps.
 
-Use plausibility and warning labels such as `reference_known`, `literature_supported`, `microbial_plausible`, `chemically_plausible`, `exploratory`, `reactive_or_artifact_possible`, and `manual_review_required` to triage downstream work.
+## Scientific scope and cautions
 
-## Bile Acid Cores
+BAWorkbench creates traceable chemical hypotheses. Candidate plausibility labels and warning flags must be reviewed before docking or experimental interpretation. Generated 3D conformers are computational starting points, not validated bioactive conformations. The 7-oxo structures retain explicit source-review warnings in the code. See [LIMITATIONS.md](LIMITATIONS.md) before using results in a manuscript.
 
-The first prototype includes:
+## Requirements
 
-- `CA`: cholic acid, C3-OH, C7-OH, C12-OH, C24-COOH
-- `CDCA`: chenodeoxycholic acid, C3-OH, C7-OH, C24-COOH
-- `DCA`: deoxycholic acid, C3-OH, C12-OH, C24-COOH
-- `LCA`: lithocholic acid, C3-OH, C24-COOH
-- `UDCA`: ursodeoxycholic acid, C3-OH, C7-OH, C24-COOH
-- `7oxoCA`: 7-oxo-cholic acid, C3-OH, C7-oxo, C12-OH, C24-COOH
-- `7oxoCDCA`: 7-oxo-chenodeoxycholic acid, C3-OH, C7-oxo, C24-COOH
+- Python 3.10 or newer (Python 3.11 is used by `environment.yml`)
+- Windows, macOS, or Linux
+- RDKit and the dependencies declared in [`pyproject.toml`](pyproject.toml)
+- Mamba/Conda is recommended because it provides consistent RDKit installation
 
-Core SMILES are validated by RDKit at load time. The LCA stereochemistry is checked against PubChem CID 9903; the 7-oxo structures are flagged with TODO notes for production-grade stereochemical review.
+No GPU is required.
 
-## Reaction Channels
+## Installation
 
-Implemented covalent channels:
-
-- `C24_amide`: BA-C24-COOH plus primary/secondary amines
-- `C24_ester`: BA-C24-COOH plus alcohols or phenols
-- `BA_O_acyl`: BA hydroxyl esterification with carboxylic acids/acyl-like partners
-- `BA_O_glycoside`: BA hydroxyl glycosides from saccharide partners
-- `BA_polymeric_fragment_model`: defined glucan/exopolysaccharide DP fragments
-- `BA_O_sulfate`: covalent BA sulfate esters
-- `BA_O_phosphate`: covalent BA phosphate esters
-- `BA_reactive_carbonyl_adduct`: flagged hemiacetal/carbonyl adduct models
-
-Excluded chemistry:
-
-- BA sodium/potassium/ammonium salts
-- magnesium, iron, manganese, calcium, or other metal complexes
-- phosphate/sulfate salt complexes
-- undefined inorganic adducts
-- undefined polymers as exact molecules
-
-Salt contexts are collapsed only when they provide a covalent organic partner. For example, sodium acetate contributes acetate/acetic acid chemistry, and calcium pantothenate contributes pantothenic acid chemistry.
-
-Taurine is included as a built-in reference partner. The `C24_amide` channel therefore generates tauro conjugates for every selected core, including taurolithocholic acid for LCA.
-
-## Install
-
-Use an environment with RDKit available:
+Clone the repository:
 
 ```bash
-python -m pip install -e ".[test]"
+git clone https://github.com/Lukmen-lab/BAWorkbench.git
+cd BAWorkbench
 ```
 
-If your platform cannot install RDKit from PyPI, use conda/mamba for RDKit and then install the package in editable mode.
+### Recommended: Mamba or Conda
 
-## Run
+Windows:
 
-Generate the broad default library:
+```bat
+setup_env.bat
+run_workbench.bat
+```
+
+macOS/Linux:
 
 ```bash
-python -m ba_conjugate_generator.cli generate \
+chmod +x setup_env.sh run_workbench.sh
+./setup_env.sh
+./run_workbench.sh
+```
+
+### Pip
+
+If RDKit wheels are supported on your platform:
+
+```bash
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[test]"
+baworkbench
+```
+
+The app opens locally in a browser, normally at `http://localhost:8501`. Use **Terminate Workbench** at the top of the sidebar to stop its Streamlit server cleanly.
+
+## Quick start
+
+The Workbench initially loads the small versioned run under `examples/example_run`. Generate a complete default library from the sidebar, or use the command line:
+
+```bash
+ba-conjugate-generator generate \
   --cores CA CDCA DCA LCA UDCA 7oxoCA 7oxoCDCA \
   --output outputs/run_001 \
   --mode broad_covalent \
   --max-saccharide-dp 5
 ```
 
-Summarize an output table:
+Windows PowerShell uses a backtick instead of `\` for multiline commands, or the command can be entered on one line.
+
+Summarize an export:
 
 ```bash
-python -m ba_conjugate_generator.cli summarize \
-  --input outputs/run_001/candidates_full.tsv
+ba-conjugate-generator summarize --input outputs/run_001/candidates_full.tsv
 ```
 
-Modes:
+Generation modes:
 
-- `primary_docking`: C24 amides, C24 esters, small BA-O-acyl products, monosaccharide glycosides
-- `broad_covalent`: all chemically defined covalent candidates, larger saccharides, vitamins, nucleobases, indole metabolites, reactive flagged candidates
-- `manual_review`: speculative/reactive candidates are generated and flagged for review
+- `primary_docking`: smaller, higher-priority covalent candidate set.
+- `broad_covalent`: all chemically defined channels, including larger and flagged candidates.
+- `manual_review`: emphasizes speculative/reactive products and review flags.
 
-## Outputs
+## Chemistry represented
 
-Main exports:
+Implemented channels include:
 
-- `candidates_full.tsv`
-- `candidates_full.csv`
+- `C24_amide`
+- `C24_ester`
+- `BA_O_acyl`
+- `BA_O_glycoside`
+- `BA_polymeric_fragment_model`
+- `BA_O_sulfate`
+- `BA_O_phosphate`
+- `BA_reactive_carbonyl_adduct`
+
+Inorganic salt complexes, undefined metal complexes, gases, and undefined polymers are excluded as exact candidates. Salt-labelled organic inputs are collapsed to their covalent organic chemistry where appropriate.
+
+Arginine C24 amides explicitly distinguish the alpha-amino nitrogen and the two terminal guanidino nitrogens. L-cysteine is included; disulfide-linked L-cystine is not in the default partner set. Symmetry-equivalent reaction paths are deduplicated.
+
+## Output files
+
+Each generated run can contain:
+
+- `candidates_full.tsv` and `candidates_full.csv`
 - `candidates_metadata.json`
 - `smiles_for_docking.tsv`
-- `boltz_ligands/` with simple per-ligand YAML records for later Boltz integration
-
-QC exports:
-
+- `boltz_ligands/`
+- `generation_summary.json`
 - `invalid_candidates.tsv`
 - `excluded_partners.tsv`
 - `manual_review_candidates.tsv`
 - `duplicate_or_isomeric_groups.tsv`
-- `generation_summary.json`
 
-Each generated candidate includes reaction channel, conjugation site, partner, parent core, molecular formula, neutral monoisotopic mass, expected adduct m/z values, docking readiness, plausibility labels, warning flags, and inclusion/exclusion rationale. Every selected BA core is also included once in its unmodified form (`candidate_category=unmodified_BA`, `reaction_channel=unmodified`) as a reference ligand.
+Runtime `outputs/` and `cache/` directories are intentionally excluded from Git.
 
-Arginine C24 amides explicitly model and label attachment at the alpha-amino nitrogen and at both terminal guanidino nitrogens. The chain-connected guanidino nitrogen is not used. L-cysteine is included as the sulfur-containing amino-acid partner; disulfide-linked L-cystine is excluded from the default partner set. Symmetry-equivalent reaction paths are collapsed to one candidate row.
+## Workbench workflow
 
-## Warning Flags
+1. Select an existing run or configure and generate a new one.
+2. Filter by BA core, category, partner, reaction channel, site, mass, docking status, or warning flags.
+3. Select a row to inspect metadata and highlighted 2D/3D structures.
+4. Assign a curation status and notes.
+5. Export visible, selected, docking-ready, or manually reviewed candidates.
 
-- `manual_review_required`: do not pass directly to docking without review
-- `reactive_or_artifact_possible`: carbonyl/aldehyde or other reactive product model
-- `large_flexible_warning`: large saccharides, vitamins, or flexible structures may be challenging for docking
-- `polymeric_fragment_model`: a defined oligomer fragment represents a polymeric input
-- `defined_degree_of_polymerization=DPn`: explicit glucan fragment size
-- `anomeric_uncertainty`: glycoside stereochemistry is a model assumption
-- `exclude_context_only`: input is an inorganic salt, metal complex, gas, or undefined context-only material
+Curation is stored separately and does not modify the source candidate table.
 
-## Tests
+## Reproducibility and tests
 
-```bash
-pytest
-```
-
-The tests cover core loading, expected sites, representative amides/esters/acylations/glycosides, glucan fragments, salt exclusions, mass/adduct calculations, invalid structure reporting, exports, and CLI help.
-
-## Site-Identity Validation And Migration
-
-Bile-acid reaction sites are defined by persistent atom-map numbers in explicit mapped templates for all seven cores. Steroid hydroxyl channels resolve C3, C7, and C12 through those maps; C24 amide/ester chemistry resolves C24 independently. No BA position is assigned from RDKit atom order or substructure-match order.
-
-Every generated candidate includes:
-
-- `validated_actual_modified_position`
-- `site_validation_passed`
-- `site_validation_message`
-- `structure_id`
-- final-structure duplicate metadata
-
-A candidate cannot be `docking_ready=True` when site validation fails.
-
-Audit and repair an earlier export without overwriting it:
+Run the test suite from the repository root:
 
 ```bash
-python -m ba_conjugate_generator.cli migrate-sites \
-  --input outputs/run_001/candidates_full.csv \
-  --output outputs/run_001_site_corrected
+python -m pytest -q
 ```
 
-The migration retains the original candidate ID and SMILES, detects the original graph attachment site, moves the existing substituent to the requested mapped BA site, and writes corrected exports plus:
+The suite covers structure generation, site identity, masses/adducts, deduplication, exports, migration, the Workbench loader and filters, UI interactions, and graceful shutdown. GitHub Actions runs the same suite for each push and pull request.
 
-- `site_migration_audit.tsv`
-- `site_migration_summary.json`
+To record a manuscript analysis, retain the Git commit or release tag, generation mode, selected BA cores, maximum saccharide DP, input partner file (if any), and the generated `generation_summary.json`.
 
-For the original 1,680-row run, the regression-checked migration finds 891 mismatches, repairs all 891, leaves zero post-repair mismatches, and causes no formula, exact-mass, or formal-charge changes.
+## Suggested methods text
 
-## Bile Acid Conjugate Workbench
+> Candidate bile-acid conjugates were enumerated with BAWorkbench v0.1 (Lukmen Lab; release v0.1.0). Molecular structures were generated and validated with RDKit using explicitly mapped bile-acid reaction sites. Candidate tables included isomeric SMILES, molecular formulae, monoisotopic masses, common adduct m/z values, reaction metadata, and review flags. Generated structures were treated as hypotheses for docking and mass-spectrometric prioritization rather than evidence of biological occurrence.
 
-The Bile Acid Conjugate Workbench is a local Streamlit GUI layered on top of the BA Conjugate Candidate Generator. The generator remains the chemistry source of truth; the Workbench loads generator outputs, filters candidate tables, displays 2D/3D structures, supports curation, and exports docking/MS follow-up files. It does not implement docking.
+Adapt this wording to the exact generation mode, release commit, filters, and downstream workflow used.
 
-Target platform: Windows 10 Enterprise, CPU-only, no GPU required.
+## Citation
 
-### Workbench Setup
+Until a paper or archived DOI is available, cite the software repository and release:
 
-Create or update the mamba/conda environment:
+> Lukmen Lab. *BAWorkbench* (version 0.1.0). GitHub. https://github.com/Lukmen-lab/BAWorkbench
 
-```bat
-setup_env.bat
-```
+GitHub and citation managers can read [`CITATION.cff`](CITATION.cff). Add the associated paper/DOI there after publication.
 
-The environment is named `ba_conjugate_workbench` and installs RDKit from conda-forge along with pandas, Streamlit, py3Dmol, PyYAML, OpenPyXL, PyArrow, Pillow, and pytest.
+## Contributing and support
 
-If `mamba` or `conda` is not on PATH, edit `setup_env.bat` and `run_workbench.bat` to call your Miniforge/Mambaforge/Anaconda `activate.bat`.
+Bug reports and feature requests are welcome through [GitHub Issues](https://github.com/Lukmen-lab/BAWorkbench/issues). See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidance and [SECURITY.md](SECURITY.md) for private vulnerability reporting guidance.
 
-Launch the GUI:
+## License
 
-```bat
-run_workbench.bat
-```
-
-To stop the running server, click **Terminate Workbench** at the top of the
-sidebar. The current Streamlit server shuts down cleanly, after which its
-`mamba run` or `conda run` wrapper exits normally. The button does not stop
-unrelated Python, mamba, or conda processes.
-
-Manual launch:
-
-```bat
-mamba activate ba_conjugate_workbench
-streamlit run ba_conjugate_workbench/app.py
-```
-
-### Loading Runs
-
-Use the sidebar Project / Run controls to load an existing run folder such as:
-
-```text
-outputs/run_001
-```
-
-The Workbench looks for `candidates_full.tsv`, `candidates_full.csv`, or `candidates_metadata.json`. It also loads QC files when present:
-
-- `invalid_candidates.tsv`
-- `excluded_partners.tsv`
-- `manual_review_candidates.tsv`
-- `duplicate_or_isomeric_groups.tsv`
-- `generation_summary.json`
-
-Missing QC files are skipped gracefully.
-
-### Filtering And Table Review
-
-Sidebar filters include BA core, candidate category, partner, reaction channel, conjugation site, modified position, neutral mass, `[M-H]-`, `[M+H]+`, docking status, warning flags, formula contains N/S/P, manual-review status, and text search across candidate identifiers, names, partners, SMILES, and notes.
-
-The table is designed for at least 10,000 rows. It keeps the workflow table-based and generates 3D conformers only for selected candidates.
-
-### 2D And 3D Structure Inspection
-
-Selecting a candidate updates the metadata and structure panels.
-
-The 2D panel uses RDKit depictions and highlights, when metadata or heuristics allow:
-
-- BA core
-- partner-derived group
-- modified/conjugated site
-- newly formed bond
-
-The 3D panel generates an RDKit conformer on demand, caches it in `cache/conformer_cache/`, and displays it in a 3Dmol.js/py3Dmol-style browser viewer.
-
-Mouse controls:
-
-- left mouse drag = rotate
-- right mouse drag = translate / pan
-- mouse wheel = zoom
-
-Atom label modes:
-
-- Off
-- Element only
-- Element + RDKit atom index
-- BA conventional labels + atom indices, when metadata or heuristics are available
-
-Use the sidebar Clear conformer cache button to remove cached SDF conformers.
-
-### Curation
-
-Curation is saved separately and does not modify the original `candidates_full.tsv`.
-
-Statuses:
-
-- `unreviewed`
-- `include_for_docking`
-- `exclude_from_docking`
-- `manual_review`
-- `high_priority_for_MS`
-- `interesting_but_later`
-
-Curation files are written under the selected curation folder, for example:
-
-- `curation_state.tsv`
-- `curated_candidates_full.tsv`
-- `curated_smiles_for_docking.tsv`
-- `manual_review_notes.tsv`
-
-### Workbench Exports
-
-Available exports include:
-
-- `visible_candidates.tsv`
-- `selected_candidates.tsv`
-- `curated_candidates_full.tsv`
-- `curated_smiles_for_docking.tsv`
-- `curated_candidates_metadata.json`
-- `selected_ligands.sdf`
-- `manual_review_notes.tsv`
-- `curation_state.tsv`
-
-Docking SMILES format:
-
-```text
-candidate_id<TAB>isomeric_smiles<TAB>candidate_name
-```
-
-### Known Limitations
-
-- RDKit 2D depictions are static; full mouse interaction is in the 3D panel.
-- 3D conformers are computational approximations.
-- Large/flexible molecules may require careful manual review.
-- A single generated conformer may not represent the relevant docking conformation.
-- Generated candidates are hypotheses for prioritization and MS follow-up, not evidence of biological presence.
+BAWorkbench is released under the [MIT License](LICENSE).

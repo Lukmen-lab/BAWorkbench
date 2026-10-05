@@ -1,0 +1,4 @@
+ligand:
+  id: CA_260cae20c407
+  smiles: "CC(=O)O[C@@H]1CC[C@@]2(C)[C@@H](C1)C[C@@H](O)[C@@H]1[C@@H]2C[C@H](O)[C@]2(C)[C@@H]([C@H](C)CCC(=O)O)CC[C@@H]12"
+  name: "CA C3 Acetate ester"

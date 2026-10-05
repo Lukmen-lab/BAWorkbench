@@ -10,13 +10,13 @@ set "ENV_NAME=ba_conjugate_workbench"
 
 where mamba >nul 2>nul
 if %ERRORLEVEL% EQU 0 (
-    mamba run -n "%ENV_NAME%" python -m streamlit run ba_conjugate_workbench/app.py --browser.gatherUsageStats false
+    mamba run -n "%ENV_NAME%" baworkbench
     exit /b %ERRORLEVEL%
 )
 
 where conda >nul 2>nul
 if %ERRORLEVEL% EQU 0 (
-    conda run -n "%ENV_NAME%" python -m streamlit run ba_conjugate_workbench/app.py --browser.gatherUsageStats false
+    conda run -n "%ENV_NAME%" baworkbench
     exit /b %ERRORLEVEL%
 )
 

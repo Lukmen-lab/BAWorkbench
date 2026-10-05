@@ -1,0 +1,4 @@
+include LICENSE README.md CHANGELOG.md CITATION.cff LIMITATIONS.md
+include environment.yml requirements.txt
+recursive-include data *.yaml
+recursive-include examples/example_run *.csv *.json *.tsv *.yaml

@@ -1,0 +1,4 @@
+ligand:
+  id: CA_1f8511f24f82
+  smiles: "C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](OC(=O)CN)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C"
+  name: "CA C7 Glycine ester"

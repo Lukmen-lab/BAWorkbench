@@ -3,27 +3,49 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ba-conjugate-candidate-generator"
+name = "baworkbench"
 version = "0.1.0"
-description = "RDKit-based bile-acid conjugate candidate generator for docking and LC-MS/MS follow-up."
+description = "RDKit and Streamlit workbench for generating and reviewing bile-acid conjugate candidates."
+readme = "README.md"
 requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Lukmen Lab"}]
+keywords = ["bile acids", "cheminformatics", "RDKit", "docking", "mass spectrometry"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Chemistry",
+]
 dependencies = [
-  "rdkit>=2023.9",
-  "PyYAML>=6.0",
-  "pandas>=2.0",
-  "numpy>=1.24",
-  "streamlit>=1.35",
-  "py3Dmol>=2.0",
-  "openpyxl>=3.1",
-  "pyarrow>=15",
-  "pillow>=10",
+  "rdkit>=2023.9,<2027",
+  "PyYAML>=6.0,<7",
+  "pandas>=2.0,<4",
+  "numpy>=1.24,<3",
+  "streamlit>=1.35,<2",
+  "py3Dmol>=2.0,<3",
+  "openpyxl>=3.1,<4",
+  "pyarrow>=15,<25",
+  "pillow>=10,<13",
 ]
 
 [project.optional-dependencies]
 test = ["pytest>=8"]
 
+[project.urls]
+Homepage = "https://github.com/Lukmen-lab/BAWorkbench"
+Repository = "https://github.com/Lukmen-lab/BAWorkbench"
+Issues = "https://github.com/Lukmen-lab/BAWorkbench/issues"
+
+[project.scripts]
+ba-conjugate-generator = "ba_conjugate_generator.cli:main"
+baworkbench = "ba_conjugate_workbench.launcher:main"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
 [tool.setuptools.packages.find]
-include = ["ba_conjugate_generator*"]
+include = ["ba_conjugate_generator*", "ba_conjugate_workbench*"]

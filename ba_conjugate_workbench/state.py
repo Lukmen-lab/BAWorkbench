@@ -5,7 +5,7 @@ from __future__ import annotations
 
 def init_state(st) -> None:
     defaults = {
-        "run_folder": "outputs/run_001",
+        "run_folder": "examples/example_run",
         "candidate_file": "",
         "curation_folder": "outputs/workbench_curation",
         "selected_candidate_id": "",

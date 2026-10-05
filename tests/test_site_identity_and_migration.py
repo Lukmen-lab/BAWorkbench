@@ -94,12 +94,13 @@ def test_absent_requested_site_is_structured_skip_without_substitution():
 
 def test_first_run_migration_acceptance_counts_and_invariants(tmp_path):
     output = tmp_path / "corrected"
-    summary = migrate_previous_output("outputs/run_001/candidates_full.csv", output)
+    fixture = "tests/fixtures/legacy_candidates.csv"
+    summary = migrate_previous_output(fixture, output)
     assert summary == {
-        "input": "outputs/run_001/candidates_full.csv",
-        "total_rows": 1680,
-        "mismatches_before_repair": 891,
-        "corrected_rows": 891,
+        "input": fixture,
+        "total_rows": 2,
+        "mismatches_before_repair": 1,
+        "corrected_rows": 1,
         "failed_rows": 0,
         "mismatches_after_repair": 0,
         "formula_changes": 0,
@@ -108,7 +109,7 @@ def test_first_run_migration_acceptance_counts_and_invariants(tmp_path):
     }
     corrected = pd.read_csv(output / "candidates_full.csv")
     audit = pd.read_csv(output / "site_migration_audit.tsv", sep="\t")
-    assert len(corrected) == len(audit) == 1680
+    assert len(corrected) == len(audit) == 2
     assert corrected["site_validation_passed"].all()
     assert (audit["formula_unchanged"] == True).all()  # noqa: E712
     assert (audit["exact_mass_unchanged"] == True).all()  # noqa: E712

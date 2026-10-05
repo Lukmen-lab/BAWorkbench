@@ -1,0 +1,20 @@
+{
+  "candidate_count": 44,
+  "manual_review_count": 0,
+  "invalid_count": 0,
+  "excluded_partner_count": 0,
+  "categories": {
+    "unmodified_BA": 2,
+    "C24_ester_BA": 10,
+    "BA_O_glycoside": 4,
+    "BA_O_acyl_conjugate": 16,
+    "C24_amide_BA": 12
+  },
+  "reaction_channels": {
+    "unmodified": 2,
+    "C24_ester": 10,
+    "BA_O_glycoside": 4,
+    "BA_O_acyl": 16,
+    "C24_amide": 12
+  }
+}

@@ -29,5 +29,4 @@ def test_run_folder_control_exposes_discovered_runs():
     run_folder = next(
         widget for widget in app.selectbox if widget.label == "Load existing run folder"
     )
-    assert "outputs/run_001" in run_folder.options
-    assert "outputs/run_001_site_corrected" in run_folder.options
+    assert run_folder.value == "examples/example_run"

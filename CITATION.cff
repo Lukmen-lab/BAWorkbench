@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use BAWorkbench, please cite this software and the associated paper when available."
+title: "BAWorkbench"
+type: software
+version: 0.1.0
+date-released: 2026-10-05
+authors:
+  - name: "Lukmen Lab"
+repository-code: "https://github.com/Lukmen-lab/BAWorkbench"
+url: "https://github.com/Lukmen-lab/BAWorkbench"
+license: MIT
+keywords:
+  - bile acids
+  - RDKit
+  - cheminformatics
+  - molecular docking
+  - mass spectrometry

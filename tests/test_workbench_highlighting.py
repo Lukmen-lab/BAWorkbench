@@ -9,7 +9,7 @@ def test_highlighting_defaults_when_metadata_missing():
 
 
 def test_highlighting_for_generated_candidate():
-    df = load_candidate_file("outputs/run_001/candidates_full.tsv").candidates
+    df = load_candidate_file("examples/example_run/candidates_full.tsv").candidates
     row = df.iloc[0].to_dict()
     spec = infer_highlights(row)
     assert spec.core_atoms or spec.site_atoms
@@ -21,8 +21,11 @@ def test_large_flexible_warning_flag():
 
 
 def test_conventional_ba_labels_are_not_rdkit_position_numbers():
-    df = load_candidate_file("outputs/run_001/candidates_full.tsv").candidates
-    row = df[df["candidate_id"] == "CA_0b261eba308e"].iloc[0].to_dict()
+    df = load_candidate_file("examples/example_run/candidates_full.tsv").candidates
+    row = df[
+        (df["parent_core_abbrev"] == "CA")
+        & (df["reaction_channel"] == "C24_ester")
+    ].iloc[0].to_dict()
     labels = conventional_ba_labels(row)
     assert "C24" in labels.values()
     assert {"C3", "C7", "C12", "C24"}.issubset(set(labels.values()))

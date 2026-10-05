@@ -1,0 +1,45 @@
+candidate_id	isomeric_smiles	candidate_name
+CA_0e26b2d41768	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	cholic acid (unmodified)
+LCA_23b06528b3a0	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	lithocholic acid (unmodified)
+CA_d58ac1b66d38	C[C@H](CCC(=O)OC[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@@H]1O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 D-glucose ester
+CA_0a73a489cbac	C[C@H](CCC(=O)O[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 D-glucose ester
+CA_e858349300aa	C[C@H](CCC(=O)O[C@@H]1[C@@H](O)[C@H](O)[C@@H](CO)O[C@H]1O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 D-glucose ester
+CA_e31a8f9066f5	C[C@H](CCC(=O)O[C@@H]1[C@@H](O)[C@H](O)O[C@H](CO)[C@H]1O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 D-glucose ester
+CA_0f8a9510e455	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O[C]5O[C@H](CO)[C@@H](O)[C@H](O)[C@H]5O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C3 D-glucose glycosidic
+CA_c5c07c6bc6c5	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O[C]4O[C@H](CO)[C@@H](O)[C@H](O)[C@H]4O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C7 D-glucose glycosidic
+CA_921cda14a5e7	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O[C]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)[C@]12C	CA C12 D-glucose glycosidic
+LCA_41ea9ebf3b5b	C[C@H](CCC(=O)OC[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@@H]1O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 D-glucose ester
+LCA_70ebaa6f099a	C[C@H](CCC(=O)O[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 D-glucose ester
+LCA_2e2b613a1db4	C[C@H](CCC(=O)O[C@@H]1[C@@H](O)[C@H](O)[C@@H](CO)O[C@H]1O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 D-glucose ester
+LCA_95a1803a52bb	C[C@H](CCC(=O)O[C@@H]1[C@@H](O)[C@H](O)O[C@H](CO)[C@H]1O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 D-glucose ester
+LCA_1299f897bdba	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O[C]5O[C@H](CO)[C@@H](O)[C@H](O)[C@H]5O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C3 D-glucose glycosidic
+CA_260cae20c407	CC(=O)O[C@@H]1CC[C@@]2(C)[C@@H](C1)C[C@@H](O)[C@@H]1[C@@H]2C[C@H](O)[C@]2(C)[C@@H]([C@H](C)CCC(=O)O)CC[C@@H]12	CA C3 Acetate ester
+CA_08ce20c40d94	CC(=O)O[C@@H]1C[C@@H]2C[C@H](O)CC[C@]2(C)[C@H]2C[C@H](O)[C@]3(C)[C@@H]([C@H](C)CCC(=O)O)CC[C@H]3[C@H]12	CA C7 Acetate ester
+CA_1f6d034a94c5	CC(=O)O[C@H]1C[C@H]2[C@@H]([C@H](O)C[C@@H]3C[C@H](O)CC[C@@]32C)[C@@H]2CC[C@H]([C@H](C)CCC(=O)O)[C@@]12C	CA C12 Acetate ester
+LCA_ff40f1a37eff	CC(=O)O[C@@H]1CC[C@@]2(C)[C@H](CC[C@@H]3[C@@H]2CC[C@]2(C)[C@@H]([C@H](C)CCC(=O)O)CC[C@@H]32)C1	LCA C3 Acetate ester
+CA_6d87273cc191	CCOC(=O)CC[C@@H](C)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 Ethanol ester
+LCA_8fa4d5b1c686	CCOC(=O)CC[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 Ethanol ester
+CA_5416dc3080f4	C[C@H](CCC(=O)NCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 Glycine amide
+CA_f100f74f018d	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](OC(=O)CN)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C3 Glycine ester
+CA_1f8511f24f82	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](OC(=O)CN)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C7 Glycine ester
+CA_0d5767ca2c02	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](OC(=O)CN)[C@]12C	CA C12 Glycine ester
+LCA_008f505a7c16	C[C@H](CCC(=O)NCC(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 Glycine amide
+LCA_9d40d9afd071	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](OC(=O)CN)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C3 Glycine ester
+CA_1019bd1adbb0	C[C@H](CCC(=O)NCCS(=O)(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 Taurine amide
+LCA_2443e2676342	C[C@H](CCC(=O)NCCS(=O)(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 Taurine amide
+CA_3f8577e8c8d3	C[C@H](CCC(=O)N[C@@H](CCCNC(=N)N)C(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 L-Arginine amide (alpha_amino_N)
+CA_4f78a3c69072	C[C@H](CCC(=O)N=C(N)NCCC[C@H](N)C(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 L-Arginine amide (terminal_guanidino_N1)
+CA_83f98f0e8c1c	C[C@H](CCC(=O)NC(=N)NCCC[C@H](N)C(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 L-Arginine amide (terminal_guanidino_N2)
+CA_dffcfdaa7a0d	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](OC(=O)[C@@H](N)CCCNC(=N)N)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C3 L-Arginine ester
+CA_1f9c408e05e8	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](OC(=O)[C@@H](N)CCCNC(=N)N)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C7 L-Arginine ester
+CA_9816b1e34c43	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](OC(=O)[C@@H](N)CCCNC(=N)N)[C@]12C	CA C12 L-Arginine ester
+LCA_6a9442798256	C[C@H](CCC(=O)N[C@@H](CCCNC(=N)N)C(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 L-Arginine amide (alpha_amino_N)
+LCA_cc9b98da8fd3	C[C@H](CCC(=O)N=C(N)NCCC[C@H](N)C(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 L-Arginine amide (terminal_guanidino_N1)
+LCA_c45262b13f8e	C[C@H](CCC(=O)NC(=N)NCCC[C@H](N)C(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 L-Arginine amide (terminal_guanidino_N2)
+LCA_715967bd7fe4	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](OC(=O)[C@@H](N)CCCNC(=N)N)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C3 L-Arginine ester
+CA_55dc4a234200	C[C@H](CCC(=O)N[C@@H](CS)C(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C24 L-Cysteine amide
+CA_5ff89e134ace	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](OC(=O)[C@@H](N)CS)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C3 L-Cysteine ester
+CA_3eedfcdf4a33	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](OC(=O)[C@@H](N)CS)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C	CA C7 L-Cysteine ester
+CA_a65ea0a79afd	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](OC(=O)[C@@H](N)CS)[C@]12C	CA C12 L-Cysteine ester
+LCA_fb3640a1f102	C[C@H](CCC(=O)N[C@@H](CS)C(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C24 L-Cysteine amide
+LCA_4b2ac90ae441	C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3CC[C@@H]4C[C@H](OC(=O)[C@@H](N)CS)CC[C@]4(C)[C@H]3CC[C@]12C	LCA C3 L-Cysteine ester
