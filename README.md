@@ -6,6 +6,8 @@
 
 **BAWorkbench v0.1** is an open-source Python/RDKit and Streamlit application for generating, inspecting, curating, and exporting chemically defined bile-acid conjugate candidates. It is intended for hypothesis generation before molecular docking and LC-MS/MS follow-up. It does not perform docking and does not establish that a generated molecule exists biologically.
 
+**Use at your own risk. Lukmen Lab and the contributors do not assume any responsibility or liability for generated structures, chemical interpretations, docking results, experimental decisions, data loss, or any direct or indirect consequences of using this software. Users are solely responsible for validating structures and results before research, publication, or other use.** Read [DISCLAIMER.md](DISCLAIMER.md).
+
 ## Capabilities
 
 - Generates candidates from CA, CDCA, DCA, LCA, UDCA, 7-oxo-CA, and 7-oxo-CDCA.
@@ -111,6 +113,10 @@ Implemented channels include:
 Inorganic salt complexes, undefined metal complexes, gases, and undefined polymers are excluded as exact candidates. Salt-labelled organic inputs are collapsed to their covalent organic chemistry where appropriate.
 
 Arginine C24 amides explicitly distinguish the alpha-amino nitrogen and the two terminal guanidino nitrogens. L-cysteine is included; disulfide-linked L-cystine is not in the default partner set. Symmetry-equivalent reaction paths are deduplicated.
+
+## Extending BAWorkbench
+
+See [docs/extending.md](docs/extending.md) for worked guidance on adding BA cores, adding modification compounds, and deciding whether a new reaction requires code. User-supplied compounds can use existing reaction channels without changing Python; new BA cores and new reaction algorithms require mapped templates, implementation, and tests.
 
 ## Output files
 

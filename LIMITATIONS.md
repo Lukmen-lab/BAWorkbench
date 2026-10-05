@@ -1,5 +1,7 @@
 # Scientific and technical limitations
 
+See [DISCLAIMER.md](DISCLAIMER.md) for the full assumption-of-risk and no-liability notice. Lukmen Lab and contributors do not assume responsibility for use of this software or its outputs.
+
 - BAWorkbench enumerates hypotheses; it does not demonstrate biosynthesis, stability, abundance, or biological activity.
 - Reaction rules are structure-edit models, not kinetic or thermodynamic simulations.
 - Plausibility categories and warning flags require expert review.
